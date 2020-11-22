@@ -7,6 +7,7 @@ int print_board(void) {
 	int i;
 
 	//print board
+	printf("---------------------\n");
 	for (i = 0; i < N; i++)
 	{
 		printf("  %d", i);

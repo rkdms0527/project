@@ -31,18 +31,49 @@ void main (){
 	int input_row, input_col;
 	
 	reset_game();
-	print_board();
-	
-	//배치할 좌표 입력 받기;
-	if ((player % 2) == 0)
-		printf("put a new white othello : ");
-	else 
-		printf("put a new black othello : ");
 
+	while (end_game() == 0)
+	{
+		print_board();
+		if (배치가능한 칸 있는지 확인하기)
+			continue;  //두 player 모두 배치가 불가능하면 반복문을 빠져나가야함
+		//배치할 좌표 입력 받기;
+		if ((player % 2) == 0)
+			printf("put a new white othello : ");
+		else 
+			printf("put a new black othello : ");
+					
+		scanf("%d %d", &input_row, &input_col);
 		
-	scanf("%d %d", &input_row, &input_col);
-	player++;
-	white_flip_possible(input_row, input_col);
-	flip_white_turn(input_row, input_col);
-	print_board();
+		if ((player % 2) == 0)	//white turn
+		{
+
+			while (white_flip_possible(input_row, input_col) != 1)	//flip 불가능한 자리면 반복 
+			{	
+				printf("invalid input! (no flip happens)");
+				scanf("%d %d", &input_row, &input_col);
+			}
+			if (white_flip_possible(input_row, input_col) == 1)
+			{
+				flip_white_turn(input_row, input_col);
+				print_board();
+			}
+			player++;
+		}
+		else				//black turn
+		{
+			while (black_flip_possible(input_row, input_col) != 1)
+			{	
+				printf("invalid input! (no flip happens)");
+				scanf("%d %d", &input_row, &input_col);
+			}
+			if (black_flip_possible(input_row, input_col) == 1)
+			{
+				flip_black_turn(input_row, input_col);
+				print_board();
+			}
+			player++;
+		}
+	}
+	check_result(); 
 }
