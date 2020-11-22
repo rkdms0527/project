@@ -19,7 +19,7 @@ int print_board(void) {
 		printf("%d|", row);
 		for (col = 0; col < N; col++)
 		{
-			printf(" %c|", gameboard[row][col]); // 배열 안의 돌 출력
+			printf("%c |", gameboard[row][col]); // 배열 안의 돌 출력
 		}
 		printf("\n");
 		printf("---------------------\n");
@@ -54,7 +54,7 @@ int print_state(void){
 	}
 
 	//두 돌 개수 상태 print 
-	printf(" STATUS - WHITE : %d, BLACK : %d", white, black );
+	printf(" STATUS - WHITE : %d, BLACK : %d\n", white, black );
 	
 	
 }
