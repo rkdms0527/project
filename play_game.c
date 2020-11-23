@@ -100,7 +100,7 @@ int south_white(int row, int col){
 			while (gameboard[row+2+i][col] == 'X')
 			{ 
 			 	i++;
-			 	if ((row+1+i) > N)	//끝까지 검은돌 
+			 	if ((row+2+i) > N)	//끝까지 검은돌 
 				 	return 0; 
 			}
 				
@@ -127,11 +127,11 @@ int north_white(int row, int col){
 			while (gameboard[row-2-i][col] == 'X')
 			{ 
 			 	i++;
-			 	if ((row-1-i) > N)	//끝까지 검은돌 
+			 	if ((row-2-i) > N)	//끝까지 검은돌 
 				 	return 0; 
 			}
 				
-			if (gameboard[row-1-i][col] == 'O')
+			if (gameboard[row-2-i][col] == 'O')
 			{
 				return 1;	//flip 가능 
 			}
@@ -155,11 +155,11 @@ int southeast_white(int row, int col){
 			while (gameboard[row+2+i][col+2+i] == 'X')
 			{ 
 			 	i++;
-			 	if ((row+1+i) > N || ((col+1+i) > N))	//끝까지 검은돌 
+			 	if ((row+2+i) > N || ((col+2+i) > N))	//끝까지 검은돌 
 				 	return 0; 
 			}
 				
-			if (gameboard[row+1+i][col+1+i] == 'O')
+			if (gameboard[row+2+i][col+2+i] == 'O')
 			{
 				return 1;	//flip 가능 
 			}
@@ -182,11 +182,11 @@ int southwest_white(int row, int col){
 			while (gameboard[row+2+i][col-2-i] == 'X')
 			{ 
 			 	i++;
-			 	if ((row+1+i) > N || ((col-1-i) < N))	//끝까지 검은돌 
+			 	if ((row+2+i) > N || ((col-2-i) < N))	//끝까지 검은돌 
 				 	return 0; 
 			}
 				
-			if (gameboard[row+1+i][col-1-i] == 'O')
+			if (gameboard[row+2+i][col-2-i] == 'O')
 			{
 				return 1;	//flip 가능 
 			}
@@ -210,11 +210,11 @@ int northeast_white(int row, int col){
 			while (gameboard[row-2-i][col+2+i] == 'X')
 			{ 
 			 	i++;
-			 	if ((row-1-i) < N || ((col+1+i) > N))	//끝까지 검은돌 
+			 	if ((row-2-i) < N || ((col+2+i) > N))	//끝까지 검은돌 
 				 	return 0; 
 			}
 				
-			if (gameboard[row-1-i][col+1+i] == 'O')
+			if (gameboard[row-2-i][col+2+i] == 'O')
 			{
 				return 1;	//flip 가능 
 			}
@@ -238,11 +238,11 @@ int northwest_white(int row, int col){
 			while (gameboard[row-2-i][col-2-i] == 'X')
 			{ 
 			 	i++;
-			 	if ((row-1-i) < N || ((col-1-i) < N))	//끝까지 검은돌 
+			 	if ((row-2-i) < N || ((col-2-i) < N))	//끝까지 검은돌 
 				 	return 0; 
 			}
 				
-			if (gameboard[row-1-i][col-1-i] == 'O')
+			if (gameboard[row-2-i][col-2-i] == 'O')
 			{
 				return 1;	//flip 가능 
 			}
@@ -463,7 +463,7 @@ int south_black(int row, int col){
 			while (gameboard[row+2+i][col] == 'O')
 			{ 
 			 	i++;
-			 	if ((row+1+i) > N)	//끝까지 흰돌일때 
+			 	if ((row+2+i) > N)	//끝까지 흰돌일때 
 				 	return 0; 
 			}
 				
@@ -490,11 +490,11 @@ int north_black(int row, int col){
 			while (gameboard[row-2-i][col] == 'O')
 			{ 
 			 	i++;
-			 	if ((row-1-i) > N)	//끝까지 흰돌일때 
+			 	if ((row-2-i) > N)	//끝까지 흰돌일때 
 				 	return 0; 
 			}
 				
-			if (gameboard[row-1-i][col] == 'X')
+			if (gameboard[row-2-i][col] == 'X')
 			{
 				return 1;	//flip 가능 
 			}
@@ -509,7 +509,7 @@ int north_black(int row, int col){
 //남동 
 int southeast_black(int row, int col){
 	int i = 0; 
-	if ((row+1) >= N || (col+1) >= N )	
+	if ((row+1) > N || (col+1) > N )	
 		return 0; //빠져나가기 		
 	else
 	{
@@ -518,11 +518,11 @@ int southeast_black(int row, int col){
 			while (gameboard[row+2+i][col+2+i] == 'O')
 			{ 
 			 	i++;
-			 	if ((row+1+i) > N || ((col+1+i) > N))	//끝까지 흰돌일때 
+			 	if ((row+2+i) > N || ((col+2+i) > N))	//끝까지 흰돌일때 
 				 	return 0; 
 			}
 				
-			if (gameboard[row+1+i][col+1+i] == 'X')
+			if (gameboard[row+2+i][col+2+i] == 'X')
 			{
 				return 1;	//flip 가능 
 			}
@@ -536,7 +536,7 @@ int southeast_black(int row, int col){
 //남서 
 int southwest_black(int row, int col){
 	int i = 0; 
-	if ((row+1) >= N || (col-1) <= N )	
+	if ((row+1) > N || (col-1) < N )	
 		return 0; //빠져나가기 		
 	else
 	{
@@ -545,11 +545,11 @@ int southwest_black(int row, int col){
 			while (gameboard[row+2+i][col-2-i] == 'O')
 			{ 
 			 	i++;
-			 	if ((row+1+i) > N || ((col-1-i) < N))	//끝까지 흰돌일때 
+			 	if ((row+2+i) > N || ((col-2-i) < N))	//끝까지 흰돌일때 
 				 	return 0; 
 			}
 				
-			if (gameboard[row+1+i][col-1-i] == 'X')
+			if (gameboard[row+2+i][col-2-i] == 'X')
 			{
 				return 1;	//flip 가능 
 			}
@@ -563,7 +563,7 @@ int southwest_black(int row, int col){
 //북동 
 int northeast_black(int row, int col){
 	int i = 0; 
-	if ((row-1) <= N || (col+1) >= N )	
+	if ((row-1) < N || (col+1) > N )	
 		return 0; //빠져나가기 		
 	else
 	{
@@ -572,11 +572,11 @@ int northeast_black(int row, int col){
 			while (gameboard[row-2-i][col+2+i] == 'O')
 			{ 
 			 	i++;
-			 	if ((row-1-i) < N || ((col+1+i) > N))	//끝까지 흰돌일때 
+			 	if ((row-2-i) < N || ((col+2+i) > N))	//끝까지 흰돌일때 
 				 	return 0; 
 			}
 				
-			if (gameboard[row-1-i][col+1+i] == 'X')
+			if (gameboard[row-2-i][col+2+i] == 'X')
 			{
 				return 1;	//flip 가능 
 			}
@@ -590,7 +590,7 @@ int northeast_black(int row, int col){
 //북서 
 int northwest_black(int row, int col){
 	int i = 0; 
-	if ((row-1) <= N || (col-1) <= N )	
+	if ((row-1) < N || (col-1) < N )	
 		return 0; //빠져나가기 		
 	else
 	{
@@ -599,11 +599,11 @@ int northwest_black(int row, int col){
 			while (gameboard[row-2-i][col-2-i] == 'O')
 			{ 
 			 	i++;
-			 	if ((row-1-i) < N || ((col-1-i) < N))	//끝까지 흰돌일때 
+			 	if ((row-2-i) < N || ((col-2-i) < N))	//끝까지 흰돌일때 
 				 	return 0; 
 			}
 				
-			if (gameboard[row-1-i][col-1-i] == 'X')
+			if (gameboard[row-2-i][col-2-i] == 'X')
 			{
 				return 1;	//flip 가능 
 			}
