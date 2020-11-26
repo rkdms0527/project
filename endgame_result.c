@@ -17,7 +17,7 @@ int end_game(void)
 	{
 		for (col=0; col<N; col++)
 		{
-			if (gameboard[row][col] == ' ')
+			if (gameboard[row][col] == '  ')
 				space++;
 		}
 	}
@@ -83,3 +83,34 @@ int check_result(void)
 		printf("Draw!\n");	
 }
 
+int main_white_possible(void){
+	int white_possible = 0;
+	int row;
+	int col;
+	for (row=0; row<N; row++)
+	{
+		for (col=0; col<N; col++)
+		{
+			white_possible += white_flip_possible(row, col);
+		}
+	}
+	if (white_possible > 0)
+		return 1;
+	else
+		return 0;
+		
+}
+int main_black_possible(int row, int col){
+	int black_possible = 0;
+	for (row=0; row<N; row++)
+	{
+		for (col=0; col<N; col++)
+		{
+			black_possible += black_flip_possible(row, col);
+		}
+	}
+	if (black_possible > 0)
+		return 1;
+	else
+		return 0;
+}

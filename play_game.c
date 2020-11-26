@@ -28,8 +28,6 @@ int northwest_black(int row, int col);	//북서
 	공백일때 못 놓음
 		다음다음칸이 없을때 못 놓음
 			다른 돌 아닐때까지..
-				
-이미 있는 자리 <<<<where..?T.T 
 */	
 
 //동
@@ -269,10 +267,14 @@ int white_flip_possible (int x, int y)
 	northeast_w = northeast_white(x, y);
 	northwest_w = northwest_white(x, y);
 	
-	output = (east_w || west_w || south_w || north_w
-			|| southeast_w || southwest_w || northeast_w || northwest_w);	//하나라도 되면 돌놓기 가능 
+	if(gameboard[x][y] = ' ')	//공백일때만 놓을 수 있음 
+	{
+	
+		output = (east_w || west_w || south_w || north_w
+				|| southeast_w || southwest_w || northeast_w || northwest_w);	//하나라도 되면 돌놓기 가능 
 		
-	return output;										//output = 1 => 돌놓기 가능
+		return output;	
+	}							//output = 1 => 돌놓기 가능
 }	 
 
 int flip_white_turn(int row, int col){
@@ -509,7 +511,7 @@ int north_black(int row, int col){
 //남동 
 int southeast_black(int row, int col){
 	int i = 0; 
-	if ((row+1) > N || (col+1) > N )	
+	if ((row+1) >= N || (col+1) >= N )	
 		return 0; //빠져나가기 		
 	else
 	{
@@ -536,7 +538,7 @@ int southeast_black(int row, int col){
 //남서 
 int southwest_black(int row, int col){
 	int i = 0; 
-	if ((row+1) > N || (col-1) < N )	
+	if ((row+1) >= N || (col-1) <= N )	
 		return 0; //빠져나가기 		
 	else
 	{
@@ -563,7 +565,7 @@ int southwest_black(int row, int col){
 //북동 
 int northeast_black(int row, int col){
 	int i = 0; 
-	if ((row-1) < N || (col+1) > N )	
+	if ((row-1) <= N || (col+1) >= N )	
 		return 0; //빠져나가기 		
 	else
 	{
@@ -590,7 +592,7 @@ int northeast_black(int row, int col){
 //북서 
 int northwest_black(int row, int col){
 	int i = 0; 
-	if ((row-1) < N || (col-1) < N )	
+	if ((row-1) <= N || (col-1) <= N )	
 		return 0; //빠져나가기 		
 	else
 	{
@@ -615,8 +617,7 @@ int northwest_black(int row, int col){
 	}
 }
 
-
-//나머지 4방. . .&검은돌 
+ 
 
 int black_flip_possible (int x, int y)
 {
@@ -632,12 +633,14 @@ int black_flip_possible (int x, int y)
 	southwest_b = southwest_black(x, y);
 	northeast_b = northeast_black(x, y);
 	northwest_b = northwest_black(x, y);
+	if(gameboard[x][y] = ' ')	//공백일때만 놓을 수 있음 
+	{
 	
-	output = (east_b || west_b || south_b || north_b ||
-				southeast_b || southwest_b || northeast_b || northwest_b);	//하나라도 되면 돌놓기 가능 
-	
-	
-	return output;										//output = 1 => 돌놓기 가능
+		output = (east_b || west_b || south_b || north_b
+				|| southeast_b || southwest_b || northeast_b || northwest_b);	//하나라도 되면 돌놓기 가능 
+		
+		return output;	
+	}												//output = 1 => 돌놓기 가능
 }	 
 
 

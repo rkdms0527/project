@@ -24,30 +24,45 @@ void main (){
 		
 		if ((player % 2) == 0)	//white turn
 		{
-
-			while (white_flip_possible(input_row, input_col) != 1)	//flip 불가능한 자리면 반복 
-			{	
-				printf("invalid input! (no flip happens)");
-				scanf("%d %d", &input_row, &input_col);
-			}
-			if (white_flip_possible(input_row, input_col) == 1)
+			if(main_white_possible() == 1)
 			{
-				flip_white_turn(input_row, input_col);
+
+				while (white_flip_possible(input_row, input_col) != 1)	//flip 불가능한 자리면 반복 
+				{	
+					printf("invalid input! (no flip happens)");
+					scanf("%d %d", &input_row, &input_col);
+				}
+				if (white_flip_possible(input_row, input_col) == 1)
+				{
+					flip_white_turn(input_row, input_col);
 				
+				}
 			}
+			else
+			{
+				printf("turn pass!");
+			}
+				
 			player++;
 		}
 		else				//black turn
 		{
-			while (black_flip_possible(input_row, input_col) != 1)
-			{	
-				printf("invalid input! (no flip happens)");
-				scanf("%d %d", &input_row, &input_col);
-			}
-			if (black_flip_possible(input_row, input_col) == 1)
+			if(main_black_possible() == 1)
 			{
-				flip_black_turn(input_row, input_col);
+				while (black_flip_possible(input_row, input_col) != 1)
+				{	
+					printf("invalid input! (no flip happens)");
+					scanf("%d %d", &input_row, &input_col);
+				}
+				if (black_flip_possible(input_row, input_col) == 1)
+				{
+					flip_black_turn(input_row, input_col);
 				
+				}
+			}
+			else
+			{
+				printf("turn pass!");
 			}
 			player++;
 		}
